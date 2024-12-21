@@ -1,24 +1,7 @@
 <script setup>
-import { onMounted } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
+import AlertModal from "./components/AlertModal.vue";
 
-const verifyLicense = async (licenseKey, signature) => {
-    try {
-        const response = await axios.post('http://127.0.0.1:8000/api/license/verify', {
-          domain: licenseKey,
-          license_key: licenseKey,
-          signature: signature,
-        });
-        console.log(response.data); // { valid: true, message: "License is valid." }
-    } catch (error) {
-        console.error('Verification failed:', error);
-    }
-};
-
-
-onMounted(() => {
-  verifyLicense();
-})
 </script>
 
 <template>
@@ -31,6 +14,8 @@ onMounted(() => {
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+
+  <AlertModal/>
 </template>
 
 <style scoped>
